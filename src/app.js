@@ -6,10 +6,6 @@ class AddressComponent extends HTMLElement {
         this.attachShadow({ mode: "open" });
 
         let streets = [];
-        let http = new XMLHttpRequest();
-        const url = 'https://cors-anywhere.herokuapp.com/https://www.postdirekt.de/plzserver/PlzAjaxServlet';
-        let responseJSON = null;
-
 
         const form = {
             zip: "",
@@ -20,6 +16,10 @@ class AddressComponent extends HTMLElement {
         };
 
         const getAddresses = (zipCode) => {
+            let http = new XMLHttpRequest();
+            const url = 'https://cors-anywhere.herokuapp.com/https://www.postdirekt.de/plzserver/PlzAjaxServlet';
+            let responseJSON = null;
+
             http.open('POST', url, true);
 
             http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
